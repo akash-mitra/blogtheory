@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes(['register' => false]);
+Route::get('/', 'HomeController@welcome')->name('welcome');
+Route::get('/signup', 'SignupController@showSignUp')->name('signup');
+Route::post('/charge', 'SignupController@onBoard')->name('onboard');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
