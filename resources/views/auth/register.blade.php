@@ -109,8 +109,10 @@
         </div>
 
         <div class="w-full max-w-md mx-auto mt-8 px-4">
-            <button class="block w-full bg-indigo-dark p-4 text-white rounded-lg hover:bg-indigo">
-                Start my blog
+            <button 
+                id="payment-button" 
+                class="block w-full bg-indigo-dark p-4 text-white rounded-lg hover:bg-indigo">
+                Start My Blog
             </button>
         </div>
 
@@ -134,7 +136,7 @@
 
 <script>
     // Create a Stripe client.
-    var stripe = Stripe('pk_test_hSrEv5gXrRS6nDErryeF2Lm1');
+    var stripe = Stripe('{{ config("services.stripe.key") }}');
 
     // Create an instance of Elements.
     var elements = stripe.elements();
@@ -177,9 +179,11 @@
 
     // Handle form submission.
     var form = document.getElementById('payment-form');
+    var btn = document.getElementById('payment-button');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
-
+        btn.disabled = true;
+        btn.innerText = 'Creating... Please wait'
         stripe.createToken(card).then(function(result) {
             if (result.error) {
                 // Inform the user if there was an error.
