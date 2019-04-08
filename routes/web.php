@@ -16,3 +16,5 @@ Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/signup', 'SignupController@showSignUp')->name('signup');
 Route::post('/charge', 'SignupController@onBoard')->name('onboard');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
+Route::get('/repository/templates', 'RepositoryController@templates')->name('repo.templates.index');

@@ -44,4 +44,9 @@ return [
         ],
     ],
 
+    'bootyman' => [
+        'url' => env('BOOTYMAN_URL'),
+        'secret' => env('BOOTYMAN_SECRET'),
+    ],
+
 ];

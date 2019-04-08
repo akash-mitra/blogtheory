@@ -39,8 +39,11 @@ class SignupController extends Controller
             ->create($token);
 
         $client = new Client();
-
-        $response = $client->request('POST', 'https://bootyman.app/api/provision', [
+        $headers = [
+            'Authorization' => 'Bearer ' . config('services.bootyman.secret'),        
+            'Accept'        => 'application/json',
+        ];
+        $response = $client->request('POST', config('services.bootyman.url') . '/api/provisions', [
             'form_params' => [
                 'order_id' => $subscription->id,
                 'owner_email' => $user->email,
@@ -49,7 +52,8 @@ class SignupController extends Controller
                     "laravel-queue" => true,
                     "commands" => []
                 ]
-            ]
+            ],
+            'headers' => $headers,
         ]);
 
         if ($response->getStatusCode() == 200) { // 200 OK
