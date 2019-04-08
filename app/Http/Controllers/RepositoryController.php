@@ -10,6 +10,7 @@ class RepositoryController extends Controller
     {
     	return [
 	    		[
+	    			"id" => '1234567890'
 	    			"name" => "Kayna - Home", 
 	    			"type" => "home",
 	    			"description" => "Kayna is the default template for BlogTheory. This is a simple and elegant home template optimized for general blogging sites.", 
@@ -18,6 +19,7 @@ class RepositoryController extends Controller
 	    			"version" => 1.0
 	    		],
 	    		[
+	    			"id" => '1234567891'
 	    			"name" => "Kayna - Page", 
 	    			"type" => "Kayna is the default template for BlogTheory. This is a clean looking page template optimized for simplicity, speed and ease of use.",
 	    			"description" => "test2 description", 
